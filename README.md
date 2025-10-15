@@ -1,31 +1,24 @@
-# Kick-Off 2025 - RoboSoccer Event Website
-Intercollegiate Robotics Football — TechnoCrats GSV
+<h1>Kick-Off 2025 - RoboSoccer Event Website
+Intercollegiate Robotics Football — TechnoCrats GSV</h1>
 
-# Background of the Event
+<h1>Background of the Event</h1>
 RoboSoccer is an annual robotics football competition, bringing together teams from various colleges to compete in designing, building, and maneuvering robots on the football field. The event aims to foster innovation, teamwork, and real-world robotics applications, creating a platform where students push the boundaries of automation and sports.
 
-# Introduction
+<h1>Introduction</h1>
 Kick-Off 2025 is the official website for the RoboSoccer event, hosted by TechnoCrats, GSV. The site provides all information required for participants — from event rules and schedules to 3D arena previews and registration. Designed with a modern, interactive UI, it streamlines the onboarding process and showcases the technical spirit of the competition.
 
-# Features
-Modern, responsive landing page and themed UI
-Event summary and football-inspired design
-Schedule timeline with event breakdown
-Interactive 3D Arena simulation
-Detailed general rules and robot specifications
-Online team registration via QR code and Google Forms
-Organizing committee and contact info
-Cash prize and venue info tags
+<h1>Features</h1>
+<ul>
+    <li>Event Overview: Comprehensive details about RoboSoccer, its objectives, and significance.</li>
+    <li>Schedule: Detailed timeline of the event, including match timings and breaks.</li>
+    <li>Rules: Clear and concise rules governing the competition to ensure fair play.</li>
+    <li>3D Arena Preview: Interactive 3D model of the RoboSoccer field for better understanding of the play area.</li>
+    <li>Registration: Easy-to-use registration form with QR code for quick access.</li>
+    <li>Contact Information: Direct contact details of event organizers for queries and support.</li>
+</ul>
 
-# Usage
-Clone the repository:
-git clone https://github.com/<your-username>/<repo-name>.git
-
-Install dependencies:
-(If any external packages required, list them here)
-
-Run locally:
-Open index.html directly in your browser, or serve with a local tool (e.g., Vercel, Live Server).
+<h1>Original Links</h1>
+<a href="https://github.com/mbatwc113114/robo-soccer.git">Original Kickoff 2025</a>
 
 <h1>Explore the Event Features</h1>
 <ul>
