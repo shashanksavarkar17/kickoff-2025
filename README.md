@@ -27,24 +27,28 @@ Install dependencies:
 Run locally:
 Open index.html directly in your browser, or serve with a local tool (e.g., Vercel, Live Server).
 
-# Explore the Event Features:
-View event details on the homepage
-Check the schedule and rules
-Use the interactive Arena page to preview the playfield
-Register your team via the Register page QR code
-Schedule
-Original Links
-Registration Form
-Rulebook
-Event Demo Site
+<h1>Explore the Event Features</h1>
+<ul>
+    <li>View event details on the homepage</li>
+    <li>Check the schedule and rules</li>
+    <li>Use the interactive Arena page to preview the playfield</li>
+    <li>Register your team via the Register page QR code</li>
+    <li>Schedule</li>
+    <li>Original Links</li>
+    <li>Registration Form</li>
+    <li>Rulebook</li>
+    <li>Event Demo Site</li>
+</ul>
 
-# Organizers
-Arpit Srivastava (Event Head) — +91-9696579460
-Aman Choudhary (Event Head) — +91-7987347287
-Pranjal Chaturvedi (Coordinator) — +91-7878330376
-Shashank Savarkar (Coordinator) — +91-7410075050
+<h1>Organizers</h1>
+<ul>
+<li> Arpit Srivastava (Event Head) — +91-9696579460 </li>
+<li> Aman Choudhary (Event Head) — +91-7987347287 </li>
+<li> Pranjal Chaturvedi (Coordinator) — +91-7878330376 </li>
+<li> Shashank Savarkar (Coordinator) — +91-7410075050 </li>
+</ul>
 
-# Acknowledgments
+<h1>Acknowledgments</h1>
 Hosted by the TechnoCrats club, GSV
 Event website designed by organizing team members
 RoboSoccer made possible with the support of GSV faculty and participant students
