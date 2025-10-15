@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-t" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>RoboSoccer 2025 | Robotics & E.D. Domain | TechnoCrats GSV</title>
 
@@ -9,11 +9,10 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Orbitron:wght@600&display=swap"
       rel="stylesheet"
     />
-    <!-- Favicon -->
     <link
       rel="icon"
       type="image/png"
-      href="./Logo GSV-removebg (1).png"
+      href="./assets/Logo GSV-removebg (1).png"
     />
     <link rel="stylesheet" href="style.css" />
     <style>
@@ -50,37 +49,31 @@
       body {
         height: 100%;
         margin: 0;
-        /* background: linear-gradient(
-          180deg,
-          var(--bg),
-          color-mix(in srgb, var(--bg) 80%, black 6%)
-        );
-        color: var(--text);
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale; */
-        body {
-          background: repeating-linear-gradient(
-              135deg,
-              rgba(48, 60, 90, 0.09) 0px 2px,
-              transparent 2px 44px
-            ),
-            repeating-linear-gradient(
-              45deg,
-              rgba(38, 49, 71, 0.08) 0px 4px,
-              transparent 4px 44px
-            ),
-            linear-gradient(180deg, #101824 0%, #0a101a 90%);
-          background-color: #0d1425; /* solid fallback */
-          color: whitesmoke;
-          min-height: 100vh;
-        }
+        scroll-behavior: smooth;
       }
-      /* .container {
+      body {
+        background: repeating-linear-gradient(
+            135deg,
+            rgba(48, 60, 90, 0.09) 0px 2px,
+            transparent 2px 44px
+          ),
+          repeating-linear-gradient(
+            45deg,
+            rgba(38, 49, 71, 0.08) 0px 4px,
+            transparent 4px 44px
+          ),
+          linear-gradient(180deg, #101824 0%, #0a101a 90%);
+        background-color: #0d1425; /* solid fallback */
+        color: var(--text);
+        min-height: 100vh;
+      }
+      .container {
         max-width: var(--max-w);
         margin: 0 auto;
-        padding: 20px;
-      } */
+        padding: 0 20px;
+      }
 
+      /* ======= HEADER & NAV ======= */
       header {
         height: var(--nav-h);
         display: flex;
@@ -92,24 +85,23 @@
         backdrop-filter: blur(6px);
         background: linear-gradient(
           180deg,
-          rgba(255, 255, 255, 0.01),
-          transparent
+          rgba(11, 18, 32, 0.7),
+          rgba(11, 18, 32, 0.4)
         );
         padding: 0 18px;
         box-shadow: 0 10px 30px rgba(2, 6, 23, 0.5);
       }
       .brand {
         display: flex;
-        gap: 12px;
+        gap: 14px;
         align-items: center;
         text-decoration: none;
         color: inherit;
-        cursor: pointer;
       }
       .logo {
-        width: 46px;
-        height: 46px;
-        border-radius: 10px;
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -117,10 +109,20 @@
         background: linear-gradient(150deg, var(--accent), var(--accent-2));
         color: #02121a;
         font-weight: 700;
+        font-size: 1.8rem;
+      }
+      .brand-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+      .brand-subtitle {
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin-top: 2px;
       }
       nav {
         display: flex;
-        gap: 12px;
+        gap: 18px;
         align-items: center;
       }
       .nav-link {
@@ -139,15 +141,61 @@
         gap: 10px;
         align-items: center;
       }
+      
+      /* ======= HAMBURGER & MOBILE NAV ======= */
+      .hamburger-btn {
+        display: none; /* Hidden by default */
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        z-index: 1001;
+      }
+      .hamburger-btn span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: var(--text);
+        margin: 5px 0;
+        transition: all 0.3s ease;
+        border-radius: 2px;
+      }
+      .mobile-nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        max-width: 300px;
+        height: 100vh;
+        background: #0d1425;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        transition: right 0.4s cubic-bezier(0.2, 0.9, 0.2, 1);
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+      }
+      .mobile-nav.open {
+        right: 0;
+      }
+      .mobile-nav .nav-link {
+        font-size: 1.4rem;
+        color: var(--text);
+      }
+
+      /* ======= BUTTONS & UI ======= */
       .btn {
         background: linear-gradient(90deg, var(--accent), var(--accent-2));
         color: #02121a;
-        padding: 10px 14px;
+        padding: 12px 20px;
         border-radius: 10px;
         border: none;
         cursor: pointer;
         font-weight: 700;
         transition: transform 160ms ease;
+        font-size: 1rem;
       }
       .btn.secondary {
         background: transparent;
@@ -158,105 +206,205 @@
       .btn:active {
         transform: translateY(1px);
       }
+      .card {
+        background: var(--card);
+        padding: 24px;
+        border-radius: 14px;
+        box-shadow: 0 10px 30px rgba(2, 6, 23, 0.35);
+      }
+
+      /* ======= HERO SECTION ======= */
       .hero {
         display: grid;
-        grid-template-columns: 1fr 520px;
+        grid-template-columns: 1fr 1fr;
         gap: 28px;
         align-items: center;
         padding: 34px 0;
       }
-      .hero-card {
-        background: var(--card);
-        padding: 26px;
-        border-radius: var(--radius);
-        box-shadow: 0 12px 36px rgba(2, 6, 23, 0.45);
-      }
       .eyebrow {
-        font-family: Orbitron;
         color: var(--accent);
         font-weight: 700;
         letter-spacing: 0.6px;
-        font-size: 0.85rem;
+        font-size: 1rem;
+        margin-bottom: 8px;
       }
       h2 {
-        margin: 8px 0 12px;
-        font-size: 2rem;
+        margin: 8px 0 16px;
+        font-size: 2.2rem;
+        font-weight: 800;
       }
       p.muted {
         color: var(--muted);
-        margin: 0 0 14px 0;
+        margin: 0 0 24px 0;
+        font-size: 1.1rem;
+        line-height: 1.6;
+      }
+      .hero-buttons {
+        display: flex;
+        gap: 14px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+      .info-tags {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .info-tag {
+        background: var(--card);
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-size: 1rem;
+      }
+      #arenaPreview {
+        min-height: 420px;
+        border-radius: 16px;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 12px 30px rgba(2, 6, 23, 0.5);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 18px;
+      }
+      .preview-tag {
+        background: var(--accent);
+        color: #02121b;
+        padding: 6px 18px;
+        font-weight: 700;
+        border-radius: 10px;
+        font-size: 1.05rem;
+        align-self: flex-start;
+        z-index: 2;
+      }
+      .arena-actions {
+        display: flex;
+        justify-content: flex-end;
+        z-index: 2;
       }
 
-      /* Sections */
-      section {
-        padding: 32px 0;
-        scroll-margin-top: calc(var(--nav-h) + 8px);
-      }
-      .section-title {
+       /* ======= 3D ARENA PREVIEW ======= */
+       .arena-3d-container {
+        flex-grow: 1;
         display: flex;
         align-items: center;
-        gap: 12px;
-        margin-bottom: 16px;
+        justify-content: center;
+        perspective: 900px;
+        overflow: hidden;
+        position: absolute;
+        inset: 0;
+        padding-top: 50px;
       }
-      .card {
-        background: var(--card);
-        padding: 18px;
-        border-radius: 10px;
-        box-shadow: 0 10px 30px rgba(2, 6, 23, 0.35);
+      .field-3d {
+        width: 85%;
+        height: 160%;
+        max-width: 380px;
+        background: linear-gradient(180deg, #0b6b3f, #085a34);
+        border: 3px solid rgba(255, 255, 255, 0.08);
+        border-radius: 8px;
+        position: relative;
+        transform-style: preserve-3d;
+        transform: rotateX(65deg);
+        box-shadow: 0 50px 40px rgba(0,0,0,0.5);
+      }
+      .field-3d .line {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.7);
+      }
+      .center-line-3d {
+        left: 50%; top: 0; bottom: 0; width: 3px; transform: translateX(-50%);
+      }
+      .center-circle-3d {
+        position: absolute; left: 50%; top: 50%; width: 70px; height: 70px;
+        border-radius: 50%; transform: translate(-50%, -50%);
+        border: 3px solid rgba(255, 255, 255, 0.7);
+      }
+      .penalty-box-3d {
+        position: absolute; top: 25%; width: 20%; height: 50%;
+        border: 3px solid rgba(255, 255, 255, 0.7);
+      }
+      .penalty-box-left-3d { left: 5%; }
+      .penalty-box-right-3d { right: 5%; }
+      .ball-3d {
+        width: 18px; height: 18px; border-radius: 50%;
+        background: radial-gradient(circle at 30% 30%, #fff, #ccc);
+        position: absolute; left: 50%; top: 50%;
+        transform: translate3d(-50%, -50%, 9px); /* Lift the ball off the field */
+        box-shadow: 0 4px 12px rgba(0,0,0,0.6);
       }
 
-      /* Timeline & rules styling */
+      /* ======= SECTIONS & CONTENT CARDS ======= */
+      section {
+        padding: 48px 0;
+        scroll-margin-top: calc(var(--nav-h) + 16px);
+      }
+      .section-title {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 24px;
+      }
+      .content-card {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 32px;
+        border-radius: 18px;
+        text-align: center; /* This centers the button and paragraph */
+      }
+      #rules .content-card {
+        max-width: 900px;
+      }
+
+      /* ======= TIMELINE & RULES ======= */
       .timeline {
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 16px;
+        width: 100%;
+        max-width: 520px;
+        margin: 0 auto;
+        text-align: left; /* Keep timeline text left-aligned */
       }
       .timeline-item {
         display: flex;
-        gap: 12px;
+        gap: 16px;
         align-items: flex-start;
-        padding: 12px;
-        border-radius: 8px;
-        background: linear-gradient(
-          180deg,
-          rgba(255, 255, 255, 0.01),
-          transparent
-        );
       }
       .time {
         font-family: Orbitron;
         color: var(--accent);
-        min-width: 78px;
+        min-width: 90px;
+        font-weight: 700;
       }
-      ol {
+      .rules-list {
+        list-style-position: inside;
+        text-align: left;
+        font-size: 1.1rem;
+        line-height: 1.7;
+        padding: 0;
         margin: 0;
-        padding-left: 18px;
+      }
+      .rules-list li {
+        margin: 12px 0;
+      }
+      /* ======= CONTACT TABLE ======= */
+      .contact-table {
+        border-collapse: collapse;
+        font-size: 1.05rem;
+        width: 100%;
+        max-width: 600px;
+        text-align: center;
+        margin: 24px auto;
+      }
+      .contact-table th,
+      .contact-table td {
+        padding: 12px 10px;
+      }
+      .contact-table thead tr {
+        color: var(--accent);
+        border-bottom: 2px solid var(--muted);
       }
 
-      /* Arena small preview & large placeholder */
-      #arenaPreview {
-        height: 420px;
-        border-radius: 12px;
-        overflow: hidden;
-        position: relative;
-        background: linear-gradient(180deg, #09321d, #06271b);
-        box-shadow: 0 12px 30px rgba(2, 6, 23, 0.5);
-      }
-      .preview-overlay {
-        position: absolute;
-        inset: 12px;
-        pointer-events: none;
-      }
-      .arena-actions {
-        position: absolute;
-        right: 12px;
-        bottom: 12px;
-        display: flex;
-        gap: 8px;
-        z-index: 6;
-      }
-
-      /* Fullscreen simulation overlay (hidden until start) */
+      /* ======= SIMULATION OVERLAYS & STYLES ======= */
       .sim-fullscreen {
         position: fixed;
         inset: 0;
@@ -274,7 +422,6 @@
       .sim-fullscreen.show {
         display: flex;
       }
-
       .sim-modal {
         width: 920px;
         max-width: 94vw;
@@ -324,8 +471,6 @@
       .sim-option:hover {
         transform: translateY(-6px);
       }
-
-      /* Fullscreen simulation canvas area (replaces site content visually) */
       .sim-stage {
         position: fixed;
         inset: 0;
@@ -362,8 +507,6 @@
         border-radius: 10px;
         cursor: pointer;
       }
-
-      /* Sim content layout */
       .sim-content {
         flex: 1;
         display: flex;
@@ -382,9 +525,8 @@
         align-items: center;
         justify-content: center;
         box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+        overflow: hidden;
       }
-
-      /* FIELD (pitch) = realistic tones with nod to futuristic */
       .field {
         width: 96%;
         height: 92%;
@@ -408,8 +550,6 @@
         border: 6px solid rgba(255, 255, 255, 0.04);
         transform-style: preserve-3d;
       }
-
-      /* Lines */
       .line {
         position: absolute;
         background: white;
@@ -465,8 +605,6 @@
         border-right: none;
         border-radius: 4px;
       }
-
-      /* Ball (CSS sphere) */
       .ball {
         width: 46px;
         height: 46px;
@@ -485,6 +623,15 @@
         box-shadow: 0 8px 26px rgba(0, 0, 0, 0.6),
           inset 0 -6px 12px rgba(0, 0, 0, 0.15);
         animation: ball-breathe 3.2s ease-in-out infinite;
+        transition: transform 100ms ease;
+      }
+      .ball.kick {
+        animation: kick-effect 200ms ease-out;
+      }
+      @keyframes kick-effect {
+        0% { box-shadow: 0 8px 26px rgba(0,0,0,0.6), inset 0 -6px 12px rgba(0,0,0,0.15), 0 0 15px 5px var(--accent); }
+        50% { transform: translate(-50%,-50%) scale(1.1); }
+        100% { transform: translate(-50%,-50%) scale(1); }
       }
       @keyframes ball-breathe {
         0% {
@@ -497,8 +644,6 @@
           transform: translate(-50%, -50%) scale(0.995);
         }
       }
-
-      /* Demo Car (CSS 3D) */
       .car-wrapper {
         position: absolute;
         left: 30%;
@@ -508,6 +653,11 @@
         perspective: 900px;
         transform-style: preserve-3d;
         z-index: 30;
+        animation: bot-hover 2.5s ease-in-out infinite;
+      }
+       @keyframes bot-hover {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-6px); }
       }
       .car {
         width: 140px;
@@ -516,7 +666,6 @@
         transform-style: preserve-3d;
         transform-origin: center center;
         transition: transform 400ms ease;
-        animation: car-roam 6s linear infinite;
       }
       .car .body {
         position: absolute;
@@ -565,26 +714,35 @@
         transform: translateZ(20px);
         border-radius: 4px;
       }
-
-      @keyframes car-roam {
-        0% {
-          transform: translate3d(0, 0, 0) rotateY(-6deg) translateZ(0);
-        }
-        25% {
-          transform: translate3d(180px, -18px, 0) rotateY(6deg) translateZ(0);
-        }
-        50% {
-          transform: translate3d(360px, 0, 0) rotateY(-8deg) translateZ(0);
-        }
-        75% {
-          transform: translate3d(180px, 14px, 0) rotateY(6deg) translateZ(0);
-        }
-        100% {
-          transform: translate3d(0, 0, 0) rotateY(0deg) translateZ(0);
-        }
+      .car .engine-glow {
+        position: absolute;
+        left: 15px;
+        top: 18px;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background: var(--glow-color, #ff4e4e);
+        transform: translateZ(18px);
+        animation: engine-pulse 1.5s ease-in-out infinite;
       }
+      @keyframes engine-pulse {
+        0%, 100% { box-shadow: 0 0 10px 2px var(--glow-color, #ff4e4e), 0 0 20px 5px rgba(255, 78, 78, 0.5); }
+        50% { box-shadow: 0 0 15px 4px var(--glow-color, #ff4e4e), 0 0 30px 8px rgba(255, 78, 78, 0.5); }
+      }
+      .shadow {
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 110px;
+        height: 20px;
+        background: rgba(0,0,0,0.4);
+        border-radius: 50%;
+        filter: blur(8px);
+        transform: translateZ(1px);
+      }
+      .ball .shadow { width: 40px; height: 10px; bottom: -5px; }
 
-      /* Labels & overlays */
       .label {
         position: absolute;
         background: linear-gradient(90deg, var(--accent), var(--accent-2));
@@ -604,8 +762,6 @@
         border: 1px solid rgba(255, 255, 255, 0.06);
         font-weight: 700;
       }
-
-      /* Goalpost labels */
       .label.pitch {
         left: 6%;
         top: 6%;
@@ -625,12 +781,7 @@
         top: 50%;
         transform: translate(-50%, -190%);
       }
-
-      /* Exit + mode indicator */
       .mode-indicator {
-        position: absolute;
-        left: 12px;
-        bottom: 12px;
         background: linear-gradient(90deg, var(--accent), var(--accent-2));
         color: #02121a;
         padding: 8px 12px;
@@ -638,11 +789,82 @@
         font-weight: 800;
         box-shadow: 0 12px 34px rgba(0, 0, 0, 0.5);
       }
+       /* ======= GOAL CELEBRATION EFFECTS ======= */
+      .goal-text {
+        position: absolute;
+        font-size: 10rem;
+        font-family: 'Orbitron', sans-serif;
+        font-weight: 900;
+        color: var(--accent);
+        text-shadow: 0 0 10px var(--accent), 0 0 30px var(--accent-2);
+        z-index: 100;
+        pointer-events: none;
+        opacity: 0;
+        transform: scale(0.5);
+        transition: all 400ms cubic-bezier(0.2, 0.9, 0.2, 1);
+      }
+      .goal-text.show {
+        opacity: 1;
+        transform: scale(1);
+      }
+      .goal-flash {
+        position: absolute;
+        top: 15%; right: 0; width: 30%; height: 70%;
+        background: radial-gradient(circle, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 70%);
+        pointer-events: none;
+        z-index: 5;
+        opacity: 0;
+        transform: scale(0);
+        transition: all 200ms ease-out;
+      }
+      .goal-flash.show {
+        opacity: 1;
+        transform: scale(1);
+      }
 
-      /* Responsive */
+      /* ======= VISUAL ARENA STYLES (IMAGE-BASED) ======= */
+      .arena-image-container {
+        width: 100%; height: 100%;
+        perspective: 1500px;
+        display: flex; align-items: center; justify-content: center;
+        position: relative;
+      }
+      .arena-image {
+        width: 80%;
+        border-radius: 12px;
+        box-shadow: 0 50px 60px rgba(0,0,0,0.5);
+        transform: rotateX(55deg);
+        border: 4px solid rgba(255,255,255,0.3);
+      }
+      .arena-dimensions-text {
+        position: absolute;
+        bottom: 25%;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #fff;
+        background: rgba(0,0,0,0.5);
+        padding: 8px 16px;
+        border-radius: 8px;
+        text-shadow: 0 2px 5px rgba(0,0,0,0.7);
+      }
+
+
+      /* ======= RESPONSIVE ======= */
       @media (max-width: 980px) {
+        header nav {
+          display: none;
+        }
+        .hamburger-btn {
+          display: block;
+        }
         .hero {
           grid-template-columns: 1fr;
+        }
+        h2 {
+            font-size: 1.8rem;
+        }
+        .content-card {
+            padding: 24px 18px;
         }
         .sim-modal {
           width: 94vw;
@@ -651,492 +873,141 @@
         .sim-canvas {
           height: 60vh;
         }
+        .contact-table thead {
+            display: none;
+        }
+        .contact-table, .contact-table tbody, .contact-table tr, .contact-table td {
+            display: block;
+            width: 100%;
+        }
+        .contact-table tr {
+            margin-bottom: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 10px;
+        }
+        .contact-table td {
+            text-align: right;
+            padding-left: 50%;
+            position: relative;
+            padding-bottom: 8px;
+            padding-top: 8px;
+        }
+        .contact-table td:before {
+            content: attr(data-label);
+            position: absolute;
+            left: 10px;
+            width: calc(50% - 20px);
+            padding-right: 10px;
+            text-align: left;
+            font-weight: bold;
+            color: var(--accent);
+        }
+        .goal-text { font-size: 5rem; }
+        .arena-dimensions-text { font-size: 1rem; bottom: 20%; }
       }
     </style>
   </head>
-  <!-------------------------------------------MAIN BODY------------------------------------------------------------------------->
   <body>
-    <!-- HEADER -->
-    <!-- <header>
-      <div
-        class="container"
-        style="
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 0;
-        "
-      >
-        <a class="brand" id="homeBtn"
-          ><div class="logo">RS</div>
+    <header>
+      <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+        <a href="#home" class="brand">
+          <div class="logo">KO</div>
           <div>
-            <div style="font-weight: 800">RoboSoccer 2025</div>
-            <div style="font-size: 0.8rem; color: var(--muted)">
-              Intercollegiate Robotics Tournament
-            </div>
-          </div></a
-        >
-
+            <div class="brand-title">Kick-Off 2025</div>
+            <div class="brand-subtitle">Intercollegiate Robotics Football</div>
+          </div>
+        </a>
         <nav>
           <a class="nav-link" href="#home">Home</a>
           <a class="nav-link" href="#schedule">Schedule</a>
-          <a class="nav-link" href="#rules">General Rules</a>
+          <a class="nav-link" href="#rules">Rules</a>
           <a class="nav-link" href="#arena">3D Arena</a>
           <a class="nav-link" href="#register">Register</a>
           <a class="nav-link" href="#contact">Contact</a>
         </nav>
-
         <div class="controls">
-          <button id="themeToggle" class="btn secondary">
-            <span id=: Sun icon for light mode 
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="18"
-                height="18"
-                fill="currentColor"
-                viewBox="0 0 16 16"
-              >
-                <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
-                <path
-                  d="M8 0a.5.5 0 0 1 .5.5V2a.5.5 0 0 1-1 0V.5A.5.5 0 0 1 8 0zm0 14a.5.5 0 0 1 .5.5V16a.5.5 0 0 1-1 0v-1.5a.5.5 0 0 1 .5-.5zM16 8a.5.5 0 0 1-.5.5H14a.5.5 0 0 1 0-1h1.5a.5.5 0 0 1 .5.5zM2 8a.5.5 0 0 1-.5.5H0a.5.5 0 0 1 0-1h1.5A.5.5 0 0 1 2 8zm11.657-4.657a.5.5 0 0 1 .707 0l1.06 1.06a.5.5 0 1 1-.708.708l-1.06-1.06a.5.5 0 0 1 0-.708zm-9.9 9.9a.5.5 0 0 1 .707 0l1.06 1.06a.5.5 0 0 1-.707.707l-1.06-1.06a.5.5 0 0 1 0-.707zm9.9 0a.5.5 0 0 1 0 .707l-1.06 1.06a.5.5 0 1 1-.707-.707l1.06-1.06a.5.5 0 0 1 .707 0zm-9.9-9.9a.5.5 0 0 1 0 .707L2.697 5.828a.5.5 0 0 1-.707-.707l1.06-1.06a.5.5 0 0 1 .707 0z"
-                />
-              </svg>
-            </span>
-          </button> -->
-
-    <!-- <button id="startSimBtn" class="btn">Start Simulation</button> -->
-    <!-- </div>
-      </div>
-    </header>  -->
-
-    <header style="width: 100%; padding: 18px 0; background: #121a28">
-      <div
-        style="
-          display: flex;
-          align-items: center;
-          width: 100%;
-          max-width: 100vw;
-          margin: 0;
-          padding: 0 40px;
-          box-sizing: border-box;
-        "
-      >
-        <!-- Logo and Branding -->
-        <div style="display: flex; align-items: center">
-          <div
-            class="logo"
-            style="
-              width: 55px;
-              height: 55px;
-              border-radius: 14px;
-              background: #41e6c6;
-              color: #012;
-              font-size: 2.1rem;
-              font-weight: 700;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              margin-right: 14px;
-            "
-          >
-            KO
-          </div>
-          <div>
-            <div style="font-size: 1.35rem; font-weight: 700; color: #fff">
-              Kick-Off 2025
-            </div>
-            <div style="font-size: 1.01rem; color: #b9c1d7; margin-top: 4px">
-              Intercollegiate Robotics Football Tournament
-            </div>
-          </div>
+            <button class="btn" id="quickStartBtn">Start Sim</button>
+             <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
-        <!-- Navigation Links -->
-        <nav
-          style="
-            display: flex;
-            flex: 1;
-            justify-content: space-evenly;
-            gap: 38px;
-            margin-left: 48px;
-          "
-        >
-          <a
-            class="nav-link"
-            href="#home"
-            style="
-              color: #fff;
-              font-weight: 700;
-              font-size: 1.14rem;
-              text-decoration: none;
-            "
-            >Home</a
-          >
-          <a
-            class="nav-link"
-            href="#schedule"
-            style="
-              color: #fff;
-              font-weight: 700;
-              font-size: 1.14rem;
-              text-decoration: none;
-            "
-            >Schedule</a
-          >
-          <a
-            class="nav-link"
-            href="#rules"
-            style="
-              color: #fff;
-              font-weight: 700;
-              font-size: 1.14rem;
-              text-decoration: none;
-            "
-            >General Rules</a
-          >
-          <a
-            class="nav-link"
-            href="#arena"
-            style="
-              color: #fff;
-              font-weight: 700;
-              font-size: 1.14rem;
-              text-decoration: none;
-            "
-            >3D Arena</a
-          >
-          <a
-            class="nav-link"
-            href="#register"
-            style="
-              color: #fff;
-              font-weight: 700;
-              font-size: 1.14rem;
-              text-decoration: none;
-            "
-            >Register</a
-          >
-          <a
-            class="nav-link"
-            href="#contact"
-            style="
-              color: #fff;
-              font-weight: 700;
-              font-size: 1.14rem;
-              text-decoration: none;
-            "
-            >Contact</a
-          >
-        </nav>
       </div>
     </header>
 
-    <!-- MAIN PAGE -->
+    <div class="mobile-nav" id="mobileNav">
+        <a class="nav-link" href="#home">Home</a>
+        <a class="nav-link" href="#schedule">Schedule</a>
+        <a class="nav-link" href="#rules">Rules</a>
+        <a class="nav-link" href="#arena">3D Arena</a>
+        <a class="nav-link" href="#register">Register</a>
+        <a class="nav-link" href="#contact">Contact</a>
+    </div>
+
     <main class="container">
-      <!-- <section id="home" class="hero">
+      <section id="home" class="hero">
         <div class="hero-card">
-          <div class="eyebrow">ROBO SOCCER — BATTLE FOR THE CUP</div>
-          <h2>RoboSoccer 2025 — Where bots play, teams win</h2>
+          <div class="eyebrow">Robo Soccer Event 2025</div>
+          <h2>Kick-Off — Dribble to Win</h2>
           <p class="muted">
-            Join the electrifying robotics tournament. Build autonomous robots,
-            solve navigation challenges, and play in front of industry judges.
+            Robots race into action the moment kickoff begins, battling for
+            first possession & showcasing your speed, coordination, and strategy
+            right from the start.
           </p>
-          <div style="display: flex; gap: 10px; margin-top: 12px">
+          <div class="hero-buttons">
             <button class="btn" id="viewScheduleBtn">View Schedule</button>
             <button class="btn secondary" id="viewRulesBtn">View Rules</button>
-            <button class="btn" id="quickStartBtn">Start Simulation</button>
           </div>
-          <div
-            style="margin-top: 14px; display: flex; gap: 10px; flex-wrap: wrap"
-          >
-            <div
-              style="
-                background: var(--card);
-                padding: 8px 12px;
-                border-radius: 8px;
-              "
-            >
-              📍 Venue to be announced!
-            </div>
-            <div
-              style="
-                background: var(--card);
-                padding: 8px 12px;
-                border-radius: 8px;
-              "
-            >
-              🗓 Nov 13, 2025
-            </div>
-            <div
-              style="
-                background: var(--card);
-                padding: 8px 12px;
-                border-radius: 8px;
-              "
-            >
-              🏆 Exciting Cash Prizes!
-            </div>
+          <div class="info-tags">
+            <div class="info-tag">📍 Venue to be announced!</div>
+            <div class="info-tag">🗓 Nov 13, 2025</div>
+            <div class="info-tag">🏆 Exciting Cash Prizes!</div>
           </div>
         </div>
 
         <div id="arenaPreview" class="card">
-          <div
-            style="position: absolute; left: 12px; top: 12px; z-index: 4"
-            class="label pitch"
-          >
-            Arena Preview
-          </div>
-          //small aesthetic field
-          <div
-            style="
-              position: absolute;
-              inset: 12px;
-              border-radius: 8px;
-              background: repeating-linear-gradient(
-                  90deg,
-                  rgba(255, 255, 255, 0.03) 0 6px,
-                  rgba(0, 0, 0, 0.02) 6px 12px
-                ),
-                linear-gradient(180deg, #0b6b3f, #085a34);
-            "
-          ></div>
-
-          <div class="arena-actions">
-            <button class="btn secondary" id="previewStartBtn">Start</button>
-          </div>
-        </div>
-      </section> -->
-      <section
-        id="home"
-        class="hero"
-        style="
-          display: flex;
-          flex-wrap: wrap;
-          gap: 32px;
-          justify-content: center;
-          padding: 0 32px;
-        "
-      >
-        <!-- Left Hero Card -->
-        <div
-          class="hero-card"
-          style="
-            flex: 1 1 520px;
-            min-width: 320px;
-            background: var(--card);
-            border-radius: 16px;
-            box-shadow: 0 8px 28px rgba(2, 6, 23, 0.13);
-            padding: 40px 36px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-          "
-        >
-          <div
-            class="eyebrow"
-            style="
-              color: #57eeaa;
-              font-weight: 700;
-              font-size: 1.09rem;
-              margin-bottom: 12px;
-            "
-          >
-            Robo Soccer Event 2025
-          </div>
-          <h2
-            style="
-              margin: 0 0 16px 0;
-              font-size: 2.3rem;
-              font-weight: 900;
-              color: var(--text);
-            "
-          >
-            Kick-Off — Dribble to Win
-          </h2>
-          <p class="muted" style="margin-bottom: 24px; font-size: 1.17rem">
-           Robots race into action the moment kickoff begins, battling for first possession & showcase your speed, coordination, and strategy right from the start.
-          </p>
-          <div style="display: flex; gap: 14px; margin-bottom: 16px">
-            <button
-              class="btn"
-              id="viewScheduleBtn"
-              style="font-size: 1.12rem; padding: 14px 36px"
-            >
-              View Schedule
-            </button>
-            <button
-              class="btn secondary"
-              id="viewRulesBtn"
-              style="font-size: 1.12rem; padding: 14px 36px"
-            >
-              View Rules
-            </button>
-            <button
-              class="btn"
-              id="quickStartBtn"
-              style="font-size: 1.12rem; padding: 14px 36px"
-            >
-              Start Simulation
-            </button>
-          </div>
-          <div
-            style="margin-bottom: 0; display: flex; gap: 14px; flex-wrap: wrap"
-          >
-            <div
-              style="
-                background: var(--card);
-                padding: 8px 18px;
-                border-radius: 8px;
-                font-size: 1.07rem;
-              "
-            >
-              📍 Venue to be announced!
+            <div class="preview-tag">Arena Preview</div>
+            <div class="arena-3d-container">
+                <div class="field-3d">
+                    <div class="line center-line-3d"></div>
+                    <div class="center-circle-3d"></div>
+                    <div class="penalty-box-3d penalty-box-left-3d"></div>
+                    <div class="penalty-box-3d penalty-box-right-3d"></div>
+                    <div class="ball-3d"></div>
+                </div>
             </div>
-            <div
-              style="
-                background: var(--card);
-                padding: 8px 18px;
-                border-radius: 8px;
-                font-size: 1.07rem;
-              "
-            >
-              🗓 Nov 13, 2025
+            <div class="arena-actions">
+                <button class="btn secondary" id="previewStartBtn">Start</button>
             </div>
-            <div
-              style="
-                background: var(--card);
-                padding: 8px 18px;
-                border-radius: 8px;
-                font-size: 1.07rem;
-              "
-            >
-              🏆 Exciting Cash Prizes!
-            </div>
-          </div>
-        </div>
-
-        <!-- Right Arena Preview Card -->
-        <div
-          id="arenaPreview"
-          class="card"
-          style="
-            flex: 1 1 480px;
-            min-width: 320px;
-            position: relative;
-            background: var(--card);
-            border-radius: 16px;
-            box-shadow: 0 8px 28px rgba(2, 6, 23, 0.13);
-            padding: 0;
-            min-height: 410px;
-          "
-        >
-          <div
-            style="
-              position: absolute;
-              left: 18px;
-              top: 18px;
-              z-index: 4;
-              background: #41e6c6;
-              color: #02121b;
-              padding: 6px 22px;
-              font-weight: 700;
-              border-radius: 12px;
-              font-size: 1.13rem;
-            "
-          >
-            Arena Preview
-          </div>
-          <!-- small aesthetic field -->
-          <div
-            style="
-              position: absolute;
-              inset: 18px;
-              border-radius: 8px;
-              background: repeating-linear-gradient(
-                  90deg,
-                  rgba(255, 255, 255, 0.03) 0 6px,
-                  rgba(0, 0, 0, 0.02) 6px 12px
-                ),
-                linear-gradient(180deg, #0b6b3f, #085a34);
-            "
-          ></div>
-
-          <div
-            class="arena-actions"
-            style="position: absolute; right: 28px; bottom: 24px; z-index: 6"
-          >
-            <button
-              class="btn secondary"
-              id="previewStartBtn"
-              style="font-size: 1.09rem; padding: 13px 35px"
-            >
-              Start
-            </button>
-          </div>
         </div>
       </section>
 
-      <!-- SCHEDULE -->
       <section id="schedule">
-        <div class="section-title" style="justify-content: center">
-          <h3 style="text-align: center; font-size: 2rem; margin-bottom: 0">
-            Schedule
-          </h3>
-        </div>
-        <div
-          class="card"
-          style="
-            max-width: 640px;
-            margin: 32px auto 0 auto;
-            padding: 32px 32px 24px 32px;
-            border-radius: 18px;
-            box-shadow: 0 12px 40px rgba(2, 6, 23, 0.17);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: var(--card);
-          "
-        >
-          <div class="timeline" style="width: 100%; max-width: 510px">
-            <div class="timeline-item" style="padding: 10px 0">
-              <div
-                class="time"
-                style="min-width: 90px; color: var(--accent); font-weight: 700"
-              >
-                14/10/2025
-              </div>
+        <h3 class="section-title">Schedule</h3>
+        <div class="card content-card">
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="time">14/10/2025</div>
               <div><strong>Team Registration Starts</strong></div>
             </div>
-            <div class="timeline-item" style="padding: 10px 0">
-              <div
-                class="time"
-                style="min-width: 90px; color: var(--accent); font-weight: 700"
-              >
-                01/11/2025
-              </div>
+            <div class="timeline-item">
+              <div class="time">01/11/2025</div>
               <div>
                 <strong>Query and QnA Session</strong>
                 <div class="muted">Answering all issues and doubts.</div>
               </div>
             </div>
-            <div class="timeline-item" style="padding: 10px 0">
-              <div
-                class="time"
-                style="min-width: 90px; color: var(--accent); font-weight: 700"
-              >
-                08/11/2025
-              </div>
+            <div class="timeline-item">
+              <div class="time">08/11/2025</div>
               <div>
                 <strong>Team Registration Ends</strong>
                 <div class="muted">Till 07/11/2025 23:59 hrs</div>
               </div>
             </div>
-            <div class="timeline-item" style="padding: 10px 0">
-              <div
-                class="time"
-                style="min-width: 90px; color: var(--accent); font-weight: 700"
-              >
-                13/11/2025
-              </div>
+            <div class="timeline-item">
+              <div class="time">13/11/2025</div>
               <div>
                 <strong>Round I - Bot Presentation & Briefing</strong>
                 <div class="muted">
@@ -1144,25 +1015,15 @@
                 </div>
               </div>
             </div>
-            <div class="timeline-item" style="padding: 10px 0">
-              <div
-                class="time"
-                style="min-width: 90px; color: var(--accent); font-weight: 700"
-              >
-                15/11/2025
-              </div>
+            <div class="timeline-item">
+              <div class="time">15/11/2025</div>
               <div>
                 <strong>Round II - Final Round</strong>
                 <div class="muted">Championship match!</div>
               </div>
             </div>
-            <div class="timeline-item" style="padding: 10px 0">
-              <div
-                class="time"
-                style="min-width: 90px; color: var(--accent); font-weight: 700"
-              >
-                16/11/2025
-              </div>
+            <div class="timeline-item">
+              <div class="time">16/11/2025</div>
               <div>
                 <strong>Next Announcement</strong>
                 <div class="muted">From OC on Official Platform</div>
@@ -1172,148 +1033,46 @@
         </div>
       </section>
 
-      <!-- RULES -->
       <section id="rules">
-        <div class="section-title" style="justify-content: center">
-          <h3 style="text-align: center; font-size: 2rem; margin-bottom: 0">
-            General Rules
-          </h3>
-        </div>
-        <div
-          class="card"
-          style="
-            max-width: 900px;
-            width: 100%;
-            margin: 32px auto 0 auto;
-            padding: 32px 32px 24px 32px;
-            border-radius: 18px;
-            box-shadow: 0 12px 40px rgba(2, 6, 23, 0.17);
-            background: var(--card);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-          "
-        >
-          <ol
-            style="
-              width: 100%;
-              max-width: 760px;
-              margin: 0;
-              padding-left: 0;
-              list-style-position: inside;
-              text-align: center;
-              font-size: 1.14rem;
-              color: var(--text);
-              line-height: 1.6;
-            "
-          >
-            <li style="margin: 6px 0">
-              <strong>Team:</strong> 2 to 4 students.
-            </li>
-            <li style="margin: 6px 0">
-              <strong>Robot dimensions:</strong> (l × b × h) ≤ (35cm × 25cm ×
-              15cm), ≤ 2kg weight.
-            </li>
-            <li style="margin: 6px 0">
-              <strong>Autonomy:</strong> Manual control (wired or wireless)...
-              (More in Official Rulebook)
-            </li>
-            <li style="margin: 6px 0">
-              <strong>Batteries:</strong> Onboard, ≤ 24V DC. Teams must provide
-              inspection sheet.
-            </li>
-            <li style="margin: 6px 0">
-              <strong>Match format:</strong> Knockout, one-on-one matches.
-            </li>
-            <li style="margin: 6px 0">
-              <strong>Scoring:</strong> Goal = 50 points. Own goals count for
-              opponent. Referee decisions final.
-            </li>
-            <li style="margin: 6px 0">
-              <strong>Safety:</strong> Bots must have protective sheets for
-              safety.
-            </li>
-            <li style="margin: 6px 0">
-              <strong>Penalties:</strong> Unsportsmanlike conduct/sabotage =
-              penalties/disqualification.
-            </li>
+        <h3 class="section-title">General Rules</h3>
+        <div class="card content-card">
+          <ol class="rules-list">
+            <li><strong>Team Composition:</strong> 2 to 4 members, with at least 1 female member required per team.</li>
+            <li><strong>Robot Dimensions:</strong> Must fit within a $35cm \times 25cm \times 15cm$ (LWH) cube at the start of a match.</li>
+            <li><strong>Robot Weight:</strong> Maximum weight allowed is 2 kg.</li>
+            <li><strong>Power Source:</strong> Robots must be powered by batteries with a maximum voltage of 24V DC.</li>
+            <li><strong>Control System:</strong> Robots must be remotely controlled, though autonomous functions are permitted.</li>
+            <li><strong>Match Format:</strong> Matches consist of two 5-minute halves with a 1-minute break. The tournament follows a "Double-Elimination" method.</li>
+            <li><strong>Scoring:</strong> A goal is worth 1 point. Ties are broken by a 3-minute sudden death overtime, followed by a penalty shootout if necessary.</li>
+            <li><strong>Safety & Conduct:</strong> While robot interaction is allowed, intentional damage is strictly prohibited and unsportsmanlike conduct can lead to disqualification.</li>
           </ol>
         </div>
       </section>
 
-      <!-- ARENA SECTION -->
       <section id="arena">
-        <div class="section-title" style="justify-content: center">
-          <h3 style="text-align: center; font-size: 2rem; margin-bottom: 0">
-            3D Arena
-          </h3>
-        </div>
-        <div
-          class="card"
-          style="
-            max-width: 640px;
-            margin: 32px auto 0 auto;
-            padding: 32px 32px 24px 32px;
-            border-radius: 18px;
-            box-shadow: 0 12px 40px rgba(2, 6, 23, 0.17);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: var(--card);
-          "
-        >
-          <p class="muted" style="text-align: center; margin-bottom: 14px">
+        <h3 class="section-title">3D Arena</h3>
+        <div class="card content-card">
+          <p class="muted">
             This page contains an interactive simulation demo. Click
             <strong>Start</strong> to explore the arena modes.
           </p>
-          <div style="display: flex; gap: 22px; margin-top: 12px">
-            <button
-              class="btn"
-              id="arenaStartLarge"
-              style="font-size: 1.14rem; padding: 12px 34px"
-            >
-              Start Simulation
-            </button>
-            <!-- <button class="btn secondary" id="arenaInspect" style="font-size:1.11rem; padding:11px 28px;">Inspect Arena</button> -->
-          </div>
+          <button class="btn" id="arenaStartLarge">Start Simulation</button>
         </div>
       </section>
 
-      <!-- REGISTER (QR-based, centered) -->
       <section id="register">
-        <div class="section-title" style="justify-content: center">
-          <h3 style="text-align: center; font-size: 2rem; margin-bottom: 0">
-            Register
-          </h3>
-        </div>
-        <div
-          class="card"
-          style="
-            max-width: 640px;
-            margin: 32px auto 0 auto;
-            padding: 32px 32px 28px 32px;
-            border-radius: 18px;
-            box-shadow: 0 12px 40px rgba(2, 6, 23, 0.17);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: var(--card);
-          "
-        >
-          <p
-            class="muted"
-            style="margin: 0 0 18px 0; font-size: 1.17rem; text-align: center"
-          >
+        <h3 class="section-title">Register</h3>
+        <div class="card content-card">
+          <p class="muted">
             Scan the QR to register your team!
           </p>
-          <!-- QR code image (centered, big) -->
           <img
             id="regQR"
-            src="./qrcode_forms.gle.png"
+            src="./assets/qrcode_forms.gle.png"
             alt="Registration QR"
             style="
               display: block;
-              margin: 0 auto 14px auto;
+              margin: 18px auto;
               width: 220px;
               height: 220px;
               background: #fff;
@@ -1323,278 +1082,77 @@
               image-rendering: pixelated;
             "
           />
-          <p
-            class="muted"
-            id="regLinkShown"
-            style="
-              font-size: 1rem;
-              text-align: center;
-              margin-bottom: 12px;
-              word-break: break-all;
-              display: none;
-            "
-          ></p>
-          <div
-            style="
-              display: flex;
-              gap: 16px;
-              flex-wrap: wrap;
-              justify-content: center;
-              margin-bottom: 16px;
-            "
-          >
-            <button
-              class="btn"
-              id="openQRBtn"
-              style="font-size: 1.09rem; padding: 12px 26px"
-            >
-              Open QR
-            </button>
-            <button
-              class="btn secondary"
-              id="copyLinkBtn"
-              style="font-size: 1.09rem; padding: 12px 26px"
-            >
-              Copy Link
-            </button>
-            <button
-              class="btn secondary"
-              id="downloadRules2"
-              style="font-size: 1.09rem; padding: 12px 26px"
-            >
-              Download Rules
-            </button>
+          <div style="display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin-bottom: 24px;">
+            <button class="btn" id="openQRBtn">Open QR</button>
+            <button class="btn secondary" id="copyLinkBtn">Copy Link</button>
+            <button class="btn secondary" id="downloadRules2">Download Rules</button>
           </div>
-          <div
-            style="
-              width: 100%;
-              margin-top: 10px;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-            "
-          >
-            <h4
-              style="
-                margin-top: 0;
-                margin-bottom: 6px;
-                font-size: 1.15rem;
-                text-align: center;
-              "
-            >
+          <div style="text-align: center; line-height: 1.5;">
+            <h4 style="margin-top: 0; margin-bottom: 8px; font-size: 1.15rem;">
               Registration Details
             </h4>
-            <p class="muted" style="margin: 4px 0; font-size: 1rem">
-              Opens: 15/10/2025
-            </p>
-            <p class="muted" style="margin: 4px 0; font-size: 1rem">
-              Closes: 08/11/2025 23:59 hrs
-            </p>
-            <p class="muted" style="margin: 4px 0; font-size: 1rem">
-              Fee: ₹100 per team
-            </p>
-            <p class="muted" style="margin: 4px 0; font-size: 1rem">
-              Contact: technocrats@gsv.ac.in
-            </p>
+            <p class="muted" style="margin: 4px 0; font-size: 1rem">Opens: 15/10/2025</p>
+            <p class="muted" style="margin: 4px 0; font-size: 1rem">Closes: 08/11/2025 23:59 hrs</p>
+            <p class="muted" style="margin: 4px 0; font-size: 1rem">Fee: ₹100 per team</p>
+            <p class="muted" style="margin: 4px 0; font-size: 1rem">Contact: technocrats@gsv.ac.in</p>
           </div>
         </div>
       </section>
 
-      <!-- REGISTER
-    <section id="register">
-      <div class="section-title"><h3>Register</h3></div>
-      <div class="card" style="display:flex; gap:18px; flex-wrap:wrap;">
-        <div style="flex:1; min-width:280px;">
-          <label style="font-weight:700;">Team Name</label>
-          <input id="teamName" style="width:100%; padding:10px; margin-top:8px; border-radius:8px; border:none; background:rgba(255,255,255,0.02); color:var(--text)">
-          <label style="font-weight:700; margin-top:8px;">College</label>
-          <input id="college" style="width:100%; padding:10px; margin-top:8px; border-radius:8px; border:none; background:rgba(255,255,255,0.02); color:var(--text)">
-          <label style="font-weight:700; margin-top:8px;">Contact Email</label>
-          <input id="email" type="email" style="width:100%; padding:10px; margin-top:8px; border-radius:8px; border:none; background:rgba(255,255,255,0.02); color:var(--text)">
-          <div style="margin-top:12px; display:flex; gap:8px;">
-            <button class="btn" id="submitRegister">Submit</button>
-            <button class="btn secondary" id="downloadRules2">Download Rules</button>
-          </div>
-        </div>
-        <div style="width:320px;">
-          <h4 style="margin-top:0">Event Details</h4>
-          <p class="muted" style="margin:0 0 8px;">Slots left: <strong>24</strong></p>
-          <p class="muted" style="margin:0 0 8px;">Registration fee: ₹500 / team</p>
-          <p class="muted" style="margin:0 0 8px;">Contact: events@robosoccer.org</p>
-        </div>
-      </div>
-    </section> -->
-      <!-- ORGANIZING COMMITTEE -->
-      <div
-        style="
-          flex: 2;
-          min-width: 480px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-        "
-      >
-        <h3 style="margin: 0 0 14px 0; font-size: 1.5rem; text-align: center">
-          Organizing Committee
-        </h3>
-        <table
-          style="
-            border-collapse: collapse;
-            font-size: 1.08rem;
-            color: var(--text);
-            background: transparent;
-            margin-bottom: 10px;
-            box-shadow: 0 4px 18px rgba(2, 6, 23, 0.09);
-            text-align: center;
-          "
-        >
-          <thead>
-               
-            <tr
-              style="
-                color: var(--accent);
-                border-bottom: 2px solid var(--muted);
-              "
-            >
-                     
-              <th style="padding: 10px 8px; text-align: center">Name</th>
-                     
-              <th style="padding: 10px 8px; text-align: center">Role</th>
-                     
-              <th style="padding: 10px 8px; text-align: center">Phone</th>
-                   
-            </tr>
-               
-          </thead>
-             
-          <tbody>
-                 
-            <tr>
-                     
-              <td style="padding: 10px 8px; text-align: center">
-                Arpit Srivastava
-              </td>
-                     
-              <td style="padding: 10px 8px; text-align: center">Event Head</td>
-                     
-              <td style="padding: 10px 8px; text-align: center">
-                +91-9696579460
-              </td>
-                   
-            </tr>
-                 
-            <tr>
-                     
-              <td style="padding: 10px 8px; text-align: center">
-                Aman Choudhary
-              </td>
-               
-              <td style="padding: 10px 8px; text-align: center">Event Head</td>
-               
-              <td style="padding: 10px 8px; text-align: center">
-                +91-7987347287
-              </td>
-               
-            </tr>
-             
-            <tr>
-                 
-              <td style="padding: 10px 8px; text-align: center">
-                Pranjal Chaturvedi
-              </td>
-               
-              <td style="padding: 10px 8px; text-align: center">
-                Event Coordinator
-              </td>
-                   
-              <td style="padding: 10px 8px; text-align: center">
-                +91-7878330376
-              </td>
-                   
-            </tr>
-                 
-            <tr>
-                     
-              <td style="padding: 10px 8px; text-align: center">
-                Shashank Savarkar
-              </td>
-                     
-              <td style="padding: 10px 8px; text-align: center">
-                Event Coordinator
-              </td>
-                     
-              <td style="padding: 10px 8px; text-align: center">
-                +91-7410075050
-              </td>
-                   
-            </tr>
-             
-          </tbody>
-        </table>
-      </div>
+      <section id="contact">
+          <h3 class="section-title">Organizing Committee</h3>
+          <table class="contact-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Phone</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Name">Arpit Srivastav</td>
+                <td data-label="Role">Event Head</td>
+                <td data-label="Phone">+91-9696579460</td>
+              </tr>
+              <tr>
+                <td data-label="Name">Aman Choudhary</td>
+                <td data-label="Role">Event Head</td>
+                <td data-label="Phone">+91-7987347287</td>
+              </tr>
+              <tr>
+                <td data-label="Name">Pranjal Chaturvedi</td>
+                <td data-label="Role">Event Coordinator</td>
+                <td data-label="Phone">+91-7878330376</td>
+              </tr>
+              <tr>
+                <td data-label="Name">Shashank Savarkar</td>
+                <td data-label="Role">Event Coordinator</td>
+                <td data-label="Phone">+91-7410075050</td>
+              </tr>
+            </tbody>
+          </table>
+      </section>
 
-      <!-- CONTACT
-    <section id="contact">
-      <div class="section-title"><h3>Contact</h3></div>
-      <div class="card" style="display:flex; gap:18px; flex-wrap:wrap;">
-        <div style="flex:1; min-width:260px;">
-          <label style="font-weight:700">Name</label>
-          <input id="cname" style="width:100%; padding:10px; margin-top:8px; border-radius:8px; border:none; background:rgba(255,255,255,0.02)">
-          <label style="font-weight:700; margin-top:8px;">Email</label>
-          <input id="cemail" type="email" style="width:100%; padding:10px; margin-top:8px; border-radius:8px; border:none; background:rgba(255,255,255,0.02)">
-          <label style="font-weight:700; margin-top:8px;">Message</label>
-          <textarea id="cmsg" style="width:100%; padding:10px; margin-top:8px; border-radius:8px; min-height:100px; resize:vertical; border:none; background:rgba(255,255,255,0.02)"></textarea>
-          <div style="margin-top:8px;"><button class="btn" id="sendMsg">Send</button></div>
-        </div>
-        <div style="width:320px;">
-          <h4 style="margin-top:0">Organizers</h4>
-          <p class="muted">TechSoc Robotics Club, City Campus</p>
-          <p class="muted">Follow: Instagram · LinkedIn · YouTube</p>
-        </div>
-      </div>
-    </section> -->
-
-      <footer style="padding: 20px 0; color: var(--muted); text-align: center">
+      <footer style="padding: 30px 0; color: var(--muted); text-align: center">
         © RoboSoccer 2025 — Built with ♥ by TechnoCrats
       </footer>
     </main>
 
-    <!-- FULLSCREEN SIMULATION UI -->
     <div id="simFull" class="sim-fullscreen" aria-hidden="true">
-      <div
-        class="sim-modal"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="simTitle"
-      >
+      <div class="sim-modal" role="dialog" aria-modal="true" aria-labelledby="simTitle">
         <div class="sim-title">
           <div style="font-weight: 900; font-size: 1.15rem" id="simTitle">
             Choose Simulation Mode
           </div>
           <div style="color: var(--muted)">
             Press
-            <span
-              style="
-                font-family: Orbitron;
-                background: var(--card);
-                padding: 6px 8px;
-                border-radius: 8px;
-              "
-              >Esc</span
-            >
+            <span style="font-family: Orbitron; background: var(--card); padding: 6px 8px; border-radius: 8px;">Esc</span>
             or use Exit to close
           </div>
         </div>
 
-        <div
-          style="
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            justify-content: center;
-          "
-        >
+        <div class="sim-buttons">
           <div class="sim-option" id="demoCarOption">
             🏎 Demo Match Simulation
           </div>
@@ -1613,7 +1171,6 @@
       </div>
     </div>
 
-    <!-- SIMULATION STAGE (full-screen immersive) -->
     <div id="simStage" class="sim-stage" aria-hidden="true">
       <div class="sim-topbar">
         <div style="display: flex; gap: 8px; align-items: center">
@@ -1630,11 +1187,10 @@
 
       <div class="sim-content">
         <div class="sim-canvas" id="simCanvas">
-          <!-- Field / Car / Ball elements inserted dynamically -->
-        </div>
+          </div>
       </div>
     </div>
-    <!--------------------------------------------------SCRIPT------------------------------------------------------------------>
+    
     <script>
       // ========== Utility: Safe Button Listener ==========
       function addBtnListener(id, fn) {
@@ -1644,12 +1200,10 @@
 
       // Navigation Buttons Smooth Scroll
       addBtnListener("viewScheduleBtn", () => {
-        const schedule = document.getElementById("schedule");
-        if (schedule) schedule.scrollIntoView({ behavior: "smooth" });
+        document.getElementById("schedule")?.scrollIntoView({ behavior: "smooth" });
       });
       addBtnListener("viewRulesBtn", () => {
-        const rules = document.getElementById("rules");
-        if (rules) rules.scrollIntoView({ behavior: "smooth" });
+        document.getElementById("rules")?.scrollIntoView({ behavior: "smooth" });
       });
 
       // Simulation Modal Controls
@@ -1697,26 +1251,17 @@
         openChoiceModal();
       }
 
-      [
-        "startSimBtn",
-        "previewStartBtn",
-        "quickStartBtn",
-        "arenaStartLarge",
-      ].forEach((id) => {
+      ["quickStartBtn", "previewStartBtn", "arenaStartLarge"].forEach((id) => {
         addBtnListener(id, startSimulationFlow);
       });
 
       addBtnListener("simCancel", async () => {
         closeChoiceModal();
-        try {
-          if (document.fullscreenElement) await document.exitFullscreen();
-        } catch (e) {}
+        if (document.fullscreenElement) await document.exitFullscreen();
       });
       addBtnListener("exitSimBtn", async () => {
         hideSimStage();
-        try {
-          if (document.fullscreenElement) await document.exitFullscreen();
-        } catch (e) {}
+        if (document.fullscreenElement) await document.exitFullscreen();
       });
 
       document.addEventListener("fullscreenchange", () => {
@@ -1726,117 +1271,82 @@
         }
       });
 
-      // ========== Demo Car Simulation: Two Bots Competing and Looping ==========
+      // ========== Demo Car Simulation Logic ==========
       function createDemoCarSimulation() {
         showSimStage();
         if (modeBadge) modeBadge.textContent = "Competitive Bot Match";
         if (!simCanvas) return;
         simCanvas.innerHTML = "";
 
-        // Arena
+        // Add goal celebration elements
+        const goalText = document.createElement('div');
+        goalText.className = 'goal-text';
+        goalText.textContent = 'GOAL!';
+        simCanvas.appendChild(goalText);
+
+        const goalFlash = document.createElement('div');
+        goalFlash.className = 'goal-flash';
+        simCanvas.appendChild(goalFlash);
+
         const field = document.createElement("div");
         field.className = "field";
-        field.style.position = "relative";
-        field.style.overflow = "hidden";
-
-        // Field graphics
-        [
-          "center-line",
-          "center-circle",
-          "penalty-box-left",
-          "penalty-box-right",
-          "goal-left",
-          "goal-right",
-        ].forEach((cls) => {
+        ["center-line", "center-circle", "penalty-box-left", "penalty-box-right", "goal-left", "goal-right"].forEach((cls) => {
           const e = document.createElement("div");
           e.className = cls.includes("line") ? "line " + cls : cls;
           field.appendChild(e);
         });
 
-        // Helper: bot creation
-        function makeBot(x, y, color, name, rotate) {
+        function makeBot(x, y, color, glowColor, rotate) {
           const botWrap = document.createElement("div");
           botWrap.className = "car-wrapper";
-          botWrap.style.position = "absolute";
           botWrap.style.left = x + "%";
           botWrap.style.top = y + "%";
-          botWrap.style.width = "150px";
-          botWrap.style.height = "80px";
           const bot = document.createElement("div");
           bot.className = "car";
-          bot.style.background = "none";
           bot.style.transform = rotate ? "rotateY(180deg)" : "";
-          bot.innerHTML = `<div class="body" style="background:linear-gradient(180deg,${color},#fff3);" ></div>
-     <div class="cockpit"></div>
-     <div class="spoiler"></div>
-     <div class="wheel left"></div>
-     <div class="wheel right"></div>`;
+          bot.innerHTML = `<div class="body" style="background:linear-gradient(180deg,${color},#fff3);"></div>
+                           <div class="cockpit"></div>
+                           <div class="spoiler"></div>
+                           <div class="wheel left"></div>
+                           <div class="wheel right"></div>
+                           <div class="engine-glow" style="--glow-color: ${glowColor};"></div>
+                           <div class="shadow"></div>`;
           botWrap.appendChild(bot);
-
-          // The bot label has been removed!
-
           return botWrap;
         }
 
-        // Initial positions
-        const initialBot1 = { x: 19, y: 57 };
-        const initialBot2 = { x: 68, y: 41 };
-        const initialBall = { x: 54, y: 49 };
-        let bot1Pos = { ...initialBot1 };
-        let bot2Pos = { ...initialBot2 };
-        let ballPos = { ...initialBall };
+        const initialBot1 = { x: 19, y: 57 }, initialBot2 = { x: 68, y: 41 }, initialBall = { x: 54, y: 49 };
+        let bot1Pos = { ...initialBot1 }, bot2Pos = { ...initialBot2 }, ballPos = { ...initialBall };
 
-        // Create bots and ball
-        const bot1 = makeBot(bot1Pos.x, bot1Pos.y, "#ff4e4e", "Red Bot", false);
-        const bot2 = makeBot(bot2Pos.x, bot2Pos.y, "#2196f3", "Blue Bot", true);
+        const bot1 = makeBot(bot1Pos.x, bot1Pos.y, "#ff9e9e", "#ff4e4e", false);
+        const bot2 = makeBot(bot2Pos.x, bot2Pos.y, "#93c5fd", "#2196f3", true);
         const ball = document.createElement("div");
         ball.className = "ball";
-        ball.style.position = "absolute";
-        ball.style.width = "46px";
-        ball.style.height = "46px";
+        ball.innerHTML = '<div class="shadow"></div>';
         ball.style.left = ballPos.x + "%";
         ball.style.top = ballPos.y + "%";
 
         field.appendChild(bot1);
         field.appendChild(bot2);
         field.appendChild(ball);
-
-        // Field labels
-        const lPitch = document.createElement("div");
-        lPitch.className = "label pitch";
-        lPitch.textContent = "Pitch";
-        const lGoalL = document.createElement("div");
-        lGoalL.className = "label goal-left";
-        lGoalL.textContent = "Goalpost";
-        const lGoalR = document.createElement("div");
-        lGoalR.className = "label goal-right";
-        lGoalR.textContent = "Goalpost";
-        [lPitch, lGoalL, lGoalR].forEach((label) => field.appendChild(label));
-        const dim = document.createElement("div");
-        dim.className = "label dim";
-        dim.style.position = "absolute";
-        dim.style.right = "8px";
-        dim.style.top = "8px";
-        dim.textContent = "Dimensions: 6 m × 4 m";
-        field.appendChild(dim);
-
         simCanvas.appendChild(field);
 
-        // Animate bots toward ball, then ball into goal (looping)
-        let playing = true;
-        let bot1Active = true;
-        let bot2Active = true;
         let goalScored = false;
+        let kickCooldown = false;
+
+        function triggerGoalCelebration() {
+            goalText.classList.add('show');
+            goalFlash.classList.add('show');
+            setTimeout(() => {
+                goalText.classList.remove('show');
+                goalFlash.classList.remove('show');
+            }, 1500);
+        }
 
         function moveToward(from, to, speed) {
-          let dx = to.x - from.x;
-          let dy = to.y - from.y;
+          let dx = to.x - from.x, dy = to.y - from.y;
           let dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < speed) return { x: to.x, y: to.y };
-          return {
-            x: from.x + (dx / dist) * speed,
-            y: from.y + (dy / dist) * speed,
-          };
+          return dist < speed ? { x: to.x, y: to.y } : { x: from.x + (dx / dist) * speed, y: from.y + (dy / dist) * speed };
         }
 
         function render() {
@@ -1848,197 +1358,116 @@
           ball.style.top = ballPos.y + "%";
         }
 
-        function inField(pos) {
-          pos.x = Math.max(4, Math.min(96, pos.x));
-          pos.y = Math.max(18, Math.min(78, pos.y));
-          return pos;
-        }
-
-        function resetDemoMatch() {
-          bot1Pos = { ...initialBot1 };
-          bot2Pos = { ...initialBot2 };
-          ballPos = { ...initialBall };
-          bot1Active = true;
-          bot2Active = true;
-          goalScored = false;
-          render();
-        }
-
         function gameLoop() {
-          if (!playing) return;
+          if (!simStage.classList.contains('show')) return;
           if (!goalScored) {
-            if (bot1Active) {
-              bot1Pos = moveToward(bot1Pos, ballPos, 0.35);
-              bot1Pos = inField(bot1Pos);
-            }
-            if (bot2Active) {
-              bot2Pos = moveToward(bot2Pos, ballPos, 0.29);
-              bot2Pos = inField(bot2Pos);
-            }
-            let b1dist = Math.sqrt(
-              Math.pow(ballPos.x - bot1Pos.x, 2) +
-                Math.pow(ballPos.y - bot1Pos.y, 2)
-            );
-            let b2dist = Math.sqrt(
-              Math.pow(ballPos.x - bot2Pos.x, 2) +
-                Math.pow(ballPos.y - bot2Pos.y, 2)
-            );
-            if (b1dist < 2.8 || b2dist < 2.8) {
+            bot1Pos = moveToward(bot1Pos, ballPos, 0.35);
+            bot2Pos = moveToward(bot2Pos, ballPos, 0.29);
+            let b1dist = Math.hypot(ballPos.x - bot1Pos.x, ballPos.y - bot1Pos.y);
+            
+            if (b1dist < 4.5 && !kickCooldown) {
               goalScored = true;
+              ball.classList.add('kick');
+              kickCooldown = true;
+              setTimeout(() => ball.classList.remove('kick'), 200);
             }
           } else {
-            // Ball animates into goal (right edge), then resets for next match
             if (ballPos.x < 92) {
-              ballPos.x += 0.62;
+              ballPos.x += 0.8; 
               ballPos.y += 0.02 * (50 - ballPos.y);
-              ballPos = inField(ballPos);
             } else {
+              if (kickCooldown) { // ensures celebration happens once
+                triggerGoalCelebration();
+                kickCooldown = false; 
+              }
               setTimeout(() => {
-                resetDemoMatch();
-              }, 800); // Pause 800ms then restart match
+                bot1Pos = { ...initialBot1 };
+                bot2Pos = { ...initialBot2 };
+                ballPos = { ...initialBall };
+                goalScored = false;
+              }, 2000);
             }
           }
           render();
           requestAnimationFrame(gameLoop);
         }
-
-        bot1.querySelector(".car").addEventListener("click", () => {
-          bot1Active = !bot1Active;
-        });
-        bot2.querySelector(".car").addEventListener("click", () => {
-          bot2Active = !bot2Active;
-        });
-
         render();
         gameLoop();
       }
 
-      // Simulation Mode Buttons
+      // ========== Arena-only version ==========
+      function createArenaOnlySimulation() {
+        showSimStage();
+        if (modeBadge) modeBadge.textContent = "3D Arena Showcase";
+        if (!simCanvas) return;
+        // The path to the arena image. Make sure you have the image in './assets/arena_field.png'
+        const arenaImagePath = './arena_field.png';
+        simCanvas.innerHTML = `
+            <div class="arena-image-container">
+                <img src="${arenaImagePath}" class="arena-image" alt="RoboSoccer Arena Field">
+                <div class="arena-dimensions-text">Arena Dimensions: 210cm x 150cm</div>
+            </div>`;
+      }
+      
       addBtnListener("demoCarOption", createDemoCarSimulation);
       addBtnListener("arenaOption", createArenaOnlySimulation);
 
-      // Arena-only version
-      function createArenaOnlySimulation() {
-        showSimStage();
-        if (modeBadge) modeBadge.textContent = "3D Arena Simulation";
-        if (!simCanvas) return;
-        simCanvas.innerHTML = "";
-        const field = document.createElement("div");
-        field.className = "field";
-        [
-          "center-line",
-          "center-circle",
-          "penalty-box-left",
-          "penalty-box-right",
-          "goal-left",
-          "goal-right",
-        ].forEach((cls) => {
-          const e = document.createElement("div");
-          e.className = cls.includes("line") ? "line " + cls : cls;
-          field.appendChild(e);
-        });
-        const ball = document.createElement("div");
-        ball.className = "ball";
-        field.appendChild(ball);
-        const lPitch = document.createElement("div");
-        lPitch.className = "label pitch";
-        lPitch.textContent = "Pitch";
-        const lGoalL = document.createElement("div");
-        lGoalL.className = "label goal-left";
-        lGoalL.textContent = "Goalpost";
-        const lGoalR = document.createElement("div");
-        lGoalR.className = "label goal-right";
-        lGoalR.textContent = "Goalpost";
-        const lBall = document.createElement("div");
-        lBall.className = "label ball";
-        lBall.textContent = "Default Ball Position";
-        const dim = document.createElement("div");
-        dim.className = "label dim";
-        dim.style.position = "absolute";
-        dim.style.right = "8px";
-        dim.style.top = "8px";
-        dim.textContent = "Dimensions: 6 m × 4 m";
-        [lPitch, lGoalL, lGoalR, lBall, dim].forEach((label) =>
-          field.appendChild(label)
-        );
-        simCanvas.appendChild(field);
-      }
-
       // ===== Register Section Buttons =====
-      const registrationLink = "https://forms.gle/TdvQ14AE4ku9qs3d8"; // Registration form link
+      const registrationLink = "https://forms.gle/TdvQ14AE4ku9qs3d8";
 
-      // Toast notification helper
       function toast(msg) {
         const t = document.createElement("div");
         t.textContent = msg;
-        t.style.position = "fixed";
-        t.style.left = "50%";
-        t.style.transform = "translateX(-50%)";
-        t.style.bottom = "30px";
-        t.style.padding = "10px 14px";
-        t.style.background =
-          "linear-gradient(90deg,var(--accent),var(--accent-2))";
-        t.style.color = "#02121a";
-        t.style.borderRadius = "10px";
-        t.style.fontWeight = "600";
-        t.style.zIndex = 9999;
-        t.style.boxShadow = "0 10px 30px rgba(2,6,23,0.45)";
+        Object.assign(t.style, {
+            position: "fixed", left: "50%", transform: "translateX(-50%)", bottom: "30px",
+            padding: "10px 14px", background: "linear-gradient(90deg,var(--accent),var(--accent-2))",
+            color: "#02121a", borderRadius: "10px", fontWeight: "600", zIndex: "9999",
+            boxShadow: "0 10px 30px rgba(2,6,23,0.45)", transition: "opacity 400ms"
+        });
         document.body.appendChild(t);
-        setTimeout(() => (t.style.opacity = "0.02"), 1800);
+        setTimeout(() => t.style.opacity = "0", 1800);
         setTimeout(() => t.remove(), 2200);
       }
 
-      // Registration buttons
-      const openBtn = document.getElementById("openQRBtn");
-      const copyBtn = document.getElementById("copyLinkBtn");
-      const downloadBtn = document.getElementById("downloadRules2");
-      const linkShown = document.getElementById("regLinkShown");
+      addBtnListener("openQRBtn", () => window.open(registrationLink, "_blank"));
 
-      // Hide visible link but allow functionality
-      if (linkShown) linkShown.textContent = "";
+      addBtnListener("copyLinkBtn", async () => {
+        try {
+          await navigator.clipboard.writeText(registrationLink);
+          toast("Registration link copied");
+        } catch {
+          toast("Copy failed");
+        }
+      });
+      
+      addBtnListener("downloadRules2", () => {
+        const pdfUrl = "./KickOff Rulebook .pdf";
+        const a = document.createElement("a");
+        a.style.display = 'none';
+        a.href = pdfUrl;
+        a.download = "KickOff_Rulebook_2025.pdf";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        toast("Rulebook download started");
+      });
 
-      if (openBtn) {
-        openBtn.addEventListener("click", () => {
-          const url =
-            typeof registrationLink === "string" && registrationLink.trim()
-              ? registrationLink.trim()
-              : "https://forms.gle/TdvQ14AE4ku9qs3d8";
-          window.open(url, "_blank");
+      // ===== Mobile Navigation =====
+      const hamburgerBtn = document.getElementById("hamburgerBtn");
+      const mobileNav = document.getElementById("mobileNav");
+      const mobileNavLinks = document.querySelectorAll("#mobileNav .nav-link");
+
+      if (hamburgerBtn && mobileNav) {
+        hamburgerBtn.addEventListener("click", () => {
+            mobileNav.classList.toggle("open");
         });
-      }
 
-      if (copyBtn) {
-        copyBtn.addEventListener("click", async () => {
-          if (!registrationLink || !registrationLink.trim()) {
-            toast("No registration link set");
-            return;
-          }
-          try {
-            await navigator.clipboard.writeText(registrationLink.trim());
-            toast("Registration link copied");
-          } catch {
-            toast("Copy failed");
-          }
-        });
-      }
-
-      if (downloadBtn) {
-        downloadBtn.addEventListener("click", () => {
-          const rules = document.querySelectorAll("#rules ol li");
-          const rulesText = Array.from(rules)
-            .map((li, i) => i + 1 + ". " + li.innerText)
-            .join("\n\n");
-          const blob = new Blob([rulesText], { type: "text/plain" });
-          const a = document.createElement("a");
-          a.href = URL.createObjectURL(blob);
-          a.download = "RoboSoccer_Rules.txt";
-          a.click();
-          a.remove();
-          toast("Rules downloaded");
+        mobileNavLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                mobileNav.classList.remove("open");
+            });
         });
       }
     </script>
   </body>
-
 </html>
-
